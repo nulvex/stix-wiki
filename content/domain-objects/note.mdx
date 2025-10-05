@@ -1,0 +1,21 @@
+---
+title: Note
+---
+import { PropertiesOverview } from '@/components/properties-overview';
+import { PropertyDefinitions } from '@/components/property-definitions';
+import { Relationships } from '@/components/relationships';
+
+A Note is intended to convey informative text to provide further context and/or to provide additional analysis not contained in the STIX Objects, Marking Definition objects, or Language Content objects which the Note relates to. Notes can be created by anyone (not just the original object creator).
+
+For example, an analyst may add a Note to a Campaign object created by another organization indicating that they've seen posts related to that Campaign on a hacker forum.
+
+Because Notes are typically (though not always) created by human analysts and are comprised of human-oriented text, they contain an additional property to capture the analyst(s) that created the Note. This is distinct from the created_by_ref property, which is meant to capture the organization that created the object.
+
+## Properties
+<PropertiesOverview type='note' />
+<PropertyDefinitions type='note' />
+
+## Relationships
+There are no relationships explicitly defined between the Note object and other STIX Objects, other than the embedded relationships listed below. These embedded relationships are listed by property name along with their corresponding target.
+
+<Relationships type='note' />

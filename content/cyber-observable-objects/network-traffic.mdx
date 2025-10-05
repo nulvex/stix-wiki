@@ -1,0 +1,16 @@
+---
+title: Network Traffic
+---
+import { PropertiesOverview } from '@/components/properties-overview';
+import { PropertyDefinitions } from '@/components/property-definitions';
+import { Relationships } from '@/components/relationships';
+
+The Network Traffic object represents arbitrary network traffic that originates from a source and is addressed to a destination. The network traffic <b>MAY</b> or <b>MAY NOT</b> constitute a valid unicast, multicast, or broadcast network connection. This <b>MAY</b> also include traffic that is not established, such as a SYN flood.
+
+To allow for use cases where a source or destination address may be sensitive and not suitable for sharing, such as addresses that are internal to an organization’s network, the source and destination properties (<b>src_ref</b> and <b>dst_ref</b>, respectively) are defined as optional in the properties table below. However, a Network Traffic object <b>MUST</b> contain the <b>protocols</b> property and at least one of the <b>src_ref</b> or <b>dst_ref</b> properties and <b>SHOULD</b> contain the <b>src_port</b> and <b>dst_port</b> properties.
+
+- TODO: Add examples
+
+## Properties
+<PropertiesOverview type='network-traffic' />
+<PropertyDefinitions type='network-traffic' />

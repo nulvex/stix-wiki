@@ -1,0 +1,691 @@
+{
+  "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/sdos/tool.json",
+  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+  "title": "tool",
+  "description": "Tools are legitimate software that can be used by threat actors to perform attacks.",
+  "type": "object",
+  "allOf": [
+    {
+      "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/core.json",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "core",
+      "description": "Common properties and behavior across all STIX Domain Objects and STIX Relationship Objects.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string",
+          "pattern": "^([a-z][a-z0-9]*)+(-[a-z0-9]+)*\\-?$",
+          "minLength": 3,
+          "maxLength": 250,
+          "description": "The type property identifies the type of STIX Object (SDO, Relationship Object, etc). The value of the type field MUST be one of the types defined by a STIX Object (e.g., indicator).",
+          "not": {
+            "enum": [
+              "action"
+            ]
+          }
+        },
+        "spec_version": {
+          "type": "string",
+          "enum": [
+            "2.0",
+            "2.1"
+          ],
+          "description": "The version of the STIX specification used to represent this object."
+        },
+        "id": {
+          "description": "The id property universally and uniquely identifies this object.",
+          "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/identifier.json",
+          "$schema": "http://json-schema.org/draft/2020-12/schema#",
+          "title": "identifier",
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]+[a-z0-9]--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+        },
+        "created_by_ref": {
+          "description": "The ID of the Source object that describes who created this object.",
+          "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/identifier.json",
+          "$schema": "http://json-schema.org/draft/2020-12/schema#",
+          "title": "identifier",
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]+[a-z0-9]--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+        },
+        "labels": {
+          "type": "array",
+          "description": "The labels property specifies a set of terms used to describe this object.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "created": {
+          "description": "The created property represents the time at which the first version of this object was created. The timstamp value MUST be precise to the nearest millisecond.",
+          "allOf": [
+            {
+              "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/timestamp.json",
+              "$schema": "http://json-schema.org/draft/2020-12/schema#",
+              "title": "timestamp",
+              "description": "Represents timestamps across the CTI specifications. The format is an RFC3339 timestamp, with a required timezone specification of 'Z'.",
+              "type": "string",
+              "pattern": "^[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60)(\\.[0-9]+)?Z$"
+            },
+            {
+              "title": "timestamp_millis",
+              "pattern": "T\\d{2}:\\d{2}:\\d{2}\\.\\d{3,}Z$"
+            }
+          ]
+        },
+        "modified": {
+          "description": "The modified property represents the time that this particular version of the object was modified. The timstamp value MUST be precise to the nearest millisecond.",
+          "allOf": [
+            {
+              "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/timestamp.json",
+              "$schema": "http://json-schema.org/draft/2020-12/schema#",
+              "title": "timestamp",
+              "description": "Represents timestamps across the CTI specifications. The format is an RFC3339 timestamp, with a required timezone specification of 'Z'.",
+              "type": "string",
+              "pattern": "^[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60)(\\.[0-9]+)?Z$"
+            },
+            {
+              "title": "timestamp_millis",
+              "pattern": "T\\d{2}:\\d{2}:\\d{2}\\.\\d{3,}Z$"
+            }
+          ]
+        },
+        "revoked": {
+          "type": "boolean",
+          "description": "The revoked property indicates whether the object has been revoked."
+        },
+        "confidence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Identifies the confidence that the creator has in the correctness of their data."
+        },
+        "lang": {
+          "type": "string",
+          "description": "Identifies the language of the text content in this object."
+        },
+        "external_references": {
+          "type": "array",
+          "description": "A list of external references which refers to non-STIX information.",
+          "items": {
+            "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/external-reference.json",
+            "$schema": "http://json-schema.org/draft/2020-12/schema#",
+            "title": "external-reference",
+            "description": "External references are used to describe pointers to information represented outside of STIX.",
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "A human readable description"
+              },
+              "url": {
+                "description": "A URL reference to an external resource.",
+                "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/url-regex.json",
+                "$schema": "http://json-schema.org/draft/2020-12/schema#",
+                "title": "url-regex",
+                "type": "string",
+                "format": "uri"
+              },
+              "hashes": {
+                "description": "Specifies a dictionary of hashes for the file.",
+                "allOf": [
+                  {
+                    "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/hashes-type.json",
+                    "$schema": "http://json-schema.org/draft/2020-12/schema#",
+                    "title": "hashes",
+                    "description": "The Hashes type represents one or more cryptographic hashes, as a special set of key/value pairs",
+                    "type": "object",
+                    "allOf": [
+                      {
+                        "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/dictionary.json",
+                        "$schema": "http://json-schema.org/draft/2020-12/schema#",
+                        "title": "dictionary",
+                        "description": "A dictionary captures a set of key/value pairs",
+                        "type": "object",
+                        "minProperties": 1,
+                        "patternProperties": {
+                          "^[a-zA-Z0-9_-]{0,250}$": {
+                            "anyOf": [
+                              {
+                                "type": "array",
+                                "minItems": 1
+                              },
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "integer"
+                              },
+                              {
+                                "type": "boolean"
+                              },
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "object"
+                              }
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    ],
+                    "patternProperties": {
+                      "^[a-zA-Z0-9_-]{3,250}$": {
+                        "type": "string",
+                        "description": "Custom hash key"
+                      },
+                      "^MD5$": {
+                        "type": "string",
+                        "description": "Specifies the MD5 message digest algorithm.",
+                        "pattern": "^[a-fA-F0-9]{32}$"
+                      },
+                      "^SHA-1$": {
+                        "type": "string",
+                        "description": "Specifies the SHA-1 (secure-hash algorithm 1) cryptographic hash function.",
+                        "pattern": "^[a-fA-F0-9]{40}$"
+                      },
+                      "^SHA-256$": {
+                        "type": "string",
+                        "description": "Specifies the SHA-256 cryptographic hash function (part of the SHA2 family).",
+                        "pattern": "^[a-fA-F0-9]{64}$"
+                      },
+                      "^SHA-512$": {
+                        "type": "string",
+                        "description": "Specifies the SHA-512 cryptographic hash function (part of the SHA2 family).",
+                        "pattern": "^[a-fA-F0-9]{128}$"
+                      },
+                      "^SHA3-256$": {
+                        "type": "string",
+                        "description": "Specifies the SHA3-256 cryptographic hash function.",
+                        "pattern": "^[a-fA-F0-9]{64}$"
+                      },
+                      "^SHA3-512$": {
+                        "type": "string",
+                        "description": "Specifies the SHA3-512 cryptographic hash function.",
+                        "pattern": "^[a-fA-F0-9]{128}$"
+                      },
+                      "^SSDEEP$": {
+                        "type": "string",
+                        "description": "Specifies the ssdeep fuzzy hashing algorithm.",
+                        "pattern": "^[a-zA-Z0-9/+:.]{1,128}$"
+                      },
+                      "^TLSH$": {
+                        "type": "string",
+                        "description": "Specifies the TLSH locality-sensitive hashing algorithm.",
+                        "pattern": "^[a-zA-Z0-9]{70}$"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "propertyNames": {
+                      "pattern": "^MD5|SHA-1|SHA-256|SHA-512|SHA3-256|SHA3-512|SSDEEP|TLSH$"
+                    }
+                  }
+                ]
+              }
+            },
+            "oneOf": [
+              {
+                "properties": {
+                  "source_name": {
+                    "type": "string",
+                    "description": "The source within which the external-reference is defined (system, registry, organization, etc.)",
+                    "pattern": "^cve$"
+                  },
+                  "external_id": {
+                    "type": "string",
+                    "description": "An identifier for the external reference content.",
+                    "pattern": "^CVE-\\d{4}-(0\\d{3}|[1-9]\\d{3,})$"
+                  }
+                },
+                "required": [
+                  "source_name",
+                  "external_id"
+                ]
+              },
+              {
+                "properties": {
+                  "source_name": {
+                    "type": "string",
+                    "description": "The source within which the external-reference is defined (system, registry, organization, etc.)",
+                    "pattern": "^capec$"
+                  },
+                  "external_id": {
+                    "type": "string",
+                    "description": "An identifier for the external reference content.",
+                    "pattern": "^CAPEC-\\d+$"
+                  }
+                },
+                "required": [
+                  "source_name",
+                  "external_id"
+                ]
+              },
+              {
+                "properties": {
+                  "source_name": {
+                    "type": "string",
+                    "description": "The source within which the external-reference is defined (system, registry, organization, etc.)",
+                    "not": {
+                      "pattern": "^((cve)|(capec))$"
+                    }
+                  },
+                  "external_id": {
+                    "type": "string",
+                    "description": "An identifier for the external reference content.",
+                    "not": {
+                      "pattern": "^((CVE-\\d{4}-(0\\d{3}|[1-9]\\d{3,}))|(CAPEC-\\d+))$"
+                    }
+                  }
+                },
+                "required": [
+                  "source_name"
+                ],
+                "anyOf": [
+                  {
+                    "required": [
+                      "external_id"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "description"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "minItems": 1
+        },
+        "object_marking_refs": {
+          "type": "array",
+          "description": "The list of marking-definition objects to be applied to this object.",
+          "items": {
+            "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/identifier.json",
+            "$schema": "http://json-schema.org/draft/2020-12/schema#",
+            "title": "identifier",
+            "description": "Represents identifiers across the CTI specifications. The format consists of the name of the top-level object being identified, followed by two dashes (--), followed by a UUIDv4.",
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]+[a-z0-9]--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+          },
+          "minItems": 1
+        },
+        "granular_markings": {
+          "type": "array",
+          "description": "The set of granular markings that apply to this object.",
+          "items": {
+            "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/granular-marking.json",
+            "$schema": "http://json-schema.org/draft/2020-12/schema#",
+            "title": "granular-marking",
+            "description": "The granular-marking type defines how the list of marking-definition objects referenced by the marking_refs property to apply to a set of content identified by the list of selectors in the selectors property.",
+            "type": "object",
+            "properties": {
+              "selectors": {
+                "type": "array",
+                "description": "A list of selectors for content contained within the STIX object in which this property appears.",
+                "items": {
+                  "type": "string",
+                  "pattern": "^([a-z0-9_-]{3,249}(\\.(\\[\\d+\\]|[a-z0-9_-]{1,250}))*|id)$"
+                },
+                "minItems": 1
+              },
+              "lang": {
+                "type": "string",
+                "description": "Identifies the language of the text identified by this marking."
+              },
+              "marking_ref": {
+                "allOf": [
+                  {
+                    "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/identifier.json",
+                    "$schema": "http://json-schema.org/draft/2020-12/schema#",
+                    "title": "identifier",
+                    "description": "Represents identifiers across the CTI specifications. The format consists of the name of the top-level object being identified, followed by two dashes (--), followed by a UUIDv4.",
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]+[a-z0-9]--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+                  },
+                  {
+                    "pattern": "^marking-definition--",
+                    "description": "The marking_ref property specifies the ID of the marking-definition object that describes the marking."
+                  }
+                ]
+              }
+            },
+            "required": [
+              "selectors",
+              "marking_ref"
+            ]
+          },
+          "minItems": 1
+        },
+        "extensions": {
+          "description": "Specifies any extensions of the object, as a dictionary.",
+          "type": "object",
+          "minProperties": 1,
+          "patternProperties": {
+            "^([a-z][a-z0-9]*)+(-[a-z0-9]+)*\\-ext$": {
+              "type": "object",
+              "minProperties": 1,
+              "allOf": [
+                {
+                  "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/properties.json",
+                  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+                  "title": "properties",
+                  "description": "Rules for custom properties",
+                  "patternProperties": {
+                    "^[a-z][a-z0-9_]{0,245}_bin$": {
+                      "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/binary.json",
+                      "$schema": "http://json-schema.org/draft/2020-12/schema#",
+                      "title": "binary",
+                      "description": "The ​binary data type represents a sequence of bytes. In order to allow pattern matching on custom objects, for all properties that use the binary type, the property name MUST end with '_bin'. The JSON MTI serialization represents this as a base64-­encoded string as specified in RFC4648​. Other serializations SHOULD use a native binary type, if available.",
+                      "type": "string",
+                      "pattern": "^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$"
+                    },
+                    "^[a-z][a-z0-9_]{0,245}_hex$": {
+                      "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/hex.json",
+                      "$schema": "http://json-schema.org/draft/2020-12/schema#",
+                      "title": "hex",
+                      "description": "The hex data type encodes an array of octets (8-bit bytes) as hexadecimal. The string MUST consist of an even number of hexadecimal characters, which are the digits '0' through '9' and the letters 'a' through 'f'.  In order to allow pattern matching on custom objects, all properties that use the hex type, the property name MUST end with '_hex'.",
+                      "type": "string",
+                      "pattern": "^([a-fA-F0-9]{2})+$"
+                    },
+                    "^([a-z][a-z0-9_]{2,249})|id$": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "minItems": 1
+                        },
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "object"
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
+              "allOf": [
+                {
+                  "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/extension.json",
+                  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+                  "type": "object",
+                  "minProperties": 1,
+                  "properties": {
+                    "extension_type": {
+                      "description": "The type of extension.",
+                      "type": "string",
+                      "enum": [
+                        "new-sdo",
+                        "new-sco",
+                        "new-sro",
+                        "property-extension",
+                        "toplevel-property-extension"
+                      ]
+                    }
+                  },
+                  "allOf": [
+                    {
+                      "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/properties.json",
+                      "$schema": "http://json-schema.org/draft/2020-12/schema#",
+                      "title": "properties",
+                      "description": "Rules for custom properties",
+                      "patternProperties": {
+                        "^[a-z][a-z0-9_]{0,245}_bin$": {
+                          "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/binary.json",
+                          "$schema": "http://json-schema.org/draft/2020-12/schema#",
+                          "title": "binary",
+                          "description": "The ​binary data type represents a sequence of bytes. In order to allow pattern matching on custom objects, for all properties that use the binary type, the property name MUST end with '_bin'. The JSON MTI serialization represents this as a base64-­encoded string as specified in RFC4648​. Other serializations SHOULD use a native binary type, if available.",
+                          "type": "string",
+                          "pattern": "^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$"
+                        },
+                        "^[a-z][a-z0-9_]{0,245}_hex$": {
+                          "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/hex.json",
+                          "$schema": "http://json-schema.org/draft/2020-12/schema#",
+                          "title": "hex",
+                          "description": "The hex data type encodes an array of octets (8-bit bytes) as hexadecimal. The string MUST consist of an even number of hexadecimal characters, which are the digits '0' through '9' and the letters 'a' through 'f'.  In order to allow pattern matching on custom objects, all properties that use the hex type, the property name MUST end with '_hex'.",
+                          "type": "string",
+                          "pattern": "^([a-fA-F0-9]{2})+$"
+                        },
+                        "^([a-z][a-z0-9_]{2,249})|id$": {
+                          "anyOf": [
+                            {
+                              "type": "array",
+                              "minItems": 1
+                            },
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "object"
+                            }
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ],
+                  "required": [
+                    "extension_type"
+                  ],
+                  "definitions": {
+                    "extension-type-enum": {
+                      "type": "string",
+                      "enum": [
+                        "new-sdo",
+                        "new-sco",
+                        "new-sro",
+                        "property-extension",
+                        "toplevel-property-extension"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "allOf": [
+        {
+          "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/properties.json",
+          "$schema": "http://json-schema.org/draft/2020-12/schema#",
+          "title": "properties",
+          "description": "Rules for custom properties",
+          "patternProperties": {
+            "^[a-z][a-z0-9_]{0,245}_bin$": {
+              "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/binary.json",
+              "$schema": "http://json-schema.org/draft/2020-12/schema#",
+              "title": "binary",
+              "description": "The ​binary data type represents a sequence of bytes. In order to allow pattern matching on custom objects, for all properties that use the binary type, the property name MUST end with '_bin'. The JSON MTI serialization represents this as a base64-­encoded string as specified in RFC4648​. Other serializations SHOULD use a native binary type, if available.",
+              "type": "string",
+              "pattern": "^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$"
+            },
+            "^[a-z][a-z0-9_]{0,245}_hex$": {
+              "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/hex.json",
+              "$schema": "http://json-schema.org/draft/2020-12/schema#",
+              "title": "hex",
+              "description": "The hex data type encodes an array of octets (8-bit bytes) as hexadecimal. The string MUST consist of an even number of hexadecimal characters, which are the digits '0' through '9' and the letters 'a' through 'f'.  In order to allow pattern matching on custom objects, all properties that use the hex type, the property name MUST end with '_hex'.",
+              "type": "string",
+              "pattern": "^([a-fA-F0-9]{2})+$"
+            },
+            "^([a-z][a-z0-9_]{2,249})|id$": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "minItems": 1
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "severity"
+            ]
+          },
+          {
+            "required": [
+              "action"
+            ]
+          },
+          {
+            "required": [
+              "username"
+            ]
+          },
+          {
+            "required": [
+              "phone_numbers"
+            ]
+          }
+        ]
+      },
+      "required": [
+        "type",
+        "spec_version",
+        "id",
+        "created",
+        "modified"
+      ]
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of this object, which MUST be the literal `tool`.",
+          "enum": [
+            "tool"
+          ]
+        },
+        "id": {
+          "title": "id",
+          "pattern": "^tool--"
+        },
+        "aliases": {
+          "type": "array",
+          "description": "Alternative names used to identify this Tool.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "tool_types": {
+          "type": "array",
+          "description": "The kind(s) of tool(s) being described. Open Vocab - tool-type-ov",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "name": {
+          "type": "string",
+          "description": "The name used to identify the Tool."
+        },
+        "description": {
+          "type": "string",
+          "description": "Provides more context and details about the Tool object."
+        },
+        "tool_version": {
+          "type": "string",
+          "description": "The version identifier associated with the tool."
+        },
+        "kill_chain_phases": {
+          "type": "array",
+          "description": "The list of kill chain phases for which this Tool instance can be used.",
+          "items": {
+            "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/kill-chain-phase.json",
+            "$schema": "http://json-schema.org/draft/2020-12/schema#",
+            "title": "kill-chain-phase",
+            "description": "The kill-chain-phase represents a phase in a kill chain.",
+            "type": "object",
+            "properties": {
+              "kill_chain_name": {
+                "type": "string",
+                "description": "The name of the kill chain."
+              },
+              "phase_name": {
+                "type": "string",
+                "description": "The name of the phase in the kill chain."
+              }
+            },
+            "required": [
+              "kill_chain_name",
+              "phase_name"
+            ]
+          },
+          "minItems": 1
+        }
+      }
+    }
+  ],
+  "required": [
+    "name"
+  ],
+  "definitions": {
+    "tool-type-ov": {
+      "type": "string",
+      "enum": [
+        "denial-of-service",
+        "exploitation",
+        "information-gathering",
+        "network-capture",
+        "credential-exploitation",
+        "remote-access",
+        "vulnerability-scanning",
+        "unknown"
+      ]
+    }
+  }
+}

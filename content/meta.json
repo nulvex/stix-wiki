@@ -1,0 +1,18 @@
+{
+  "title": "Reference",
+  "description": "Structured Threat Information Expression reference documentation",
+  "icon": "Building",
+  "root": true,
+  "pages": [
+    "---Overview---",
+    "index",
+    "getting-started",
+    "walkthrough",
+    "---Reference---",
+    "domain-objects",
+    "relationship-objects",
+    "cyber-observable-objects",
+    "meta-objects",
+    "bundle-object"
+  ]
+}

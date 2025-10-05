@@ -1,0 +1,8 @@
+---
+title: Data Markings
+---
+Data markings represent restrictions, permissions, and other guidance for how data can be used and shared. For example, data may be shared with the restriction that it must not be re-shared, or that it must be encrypted at rest. In STIX, data markings are specified using the marking-definition object. These definitions are applied to complete STIX Objects using object markings and to individual properties of STIX Objects via granular markings.
+
+Multiple markings can be added to the same object, including both object and granular markings. Some types of marking definitions or trust groups have rules about which markings override other markings or which markings can be additive to other markings. This specification does not define rules for how multiple markings applied to the same object or property should be interpreted.
+
+Granular data markings are also used to mark individual fields on an object with which language their text content is in. For example, granular markings can be used to indicate that while the rest of the object is in English, the description field is in Japanese. This mechanism does not use the marking-definition object to represent language, rather a separate lang field that can also be applied via granular markings.

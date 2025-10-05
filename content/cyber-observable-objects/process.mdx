@@ -1,0 +1,37 @@
+---
+title: Process
+---
+import { PropertiesOverview } from '@/components/properties-overview';
+import { PropertyDefinitions } from '@/components/property-definitions';
+import { Relationships } from '@/components/relationships';
+
+The Process object represents common properties of an instance of a computer program as executed on an operating system. A Process object <b>MUST</b> contain at least one property (other than <b>type</b>) from this object (or one of its extensions).
+
+## Properties
+<PropertiesOverview type='process' />
+<PropertyDefinitions type='process' />
+
+## Examples
+
+```json
+[
+  {
+    "type": "file",
+    "spec_version": "2.1",
+    "id": "file--edb1ebee-4387-41cc-943b-f94fd491118c",
+    "name": "gedit-bin",
+    "hashes": {
+      "SHA-256": "aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f"
+    }
+  },
+  {
+    "type": "process",
+    "spec_version": "2.1",
+    "id": "process--d2ec5aab-808d-4492-890a-3c1a1e3cb06e",
+    "pid": 1221,
+    "created_time": "2016-01-20T14:11:25.55Z",
+    "command_line": "./gedit-bin --new-window",
+    "image_ref": "file--e04f22d1-be2c-59de-add8-10f61d15fe20"
+  }
+]
+```

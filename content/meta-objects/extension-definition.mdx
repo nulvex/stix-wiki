@@ -1,0 +1,44 @@
+---
+title: Extension Definition
+---
+The STIX Extension Definition object allows producers of threat intelligence to extend existing STIX objects or to create entirely new STIX objects in a standardized way. This object contains detailed information about the extension and any additional properties and or objects that it defines. This extension mechanism MUST NOT be used to redefine existing standardized objects or properties.
+
+If a producer does not include the STIX Extension Definition object with the STIX objects that use it, consumers should refer to section 3.3 for information in resolving references.
+
+There are three ways to extend STIX using STIX Extensions.
+
+1. Define one or more new STIX Object types.
+2. Define additional properties for an existing STIX Object type as a nested property extension. This is typically done to represent a sub-component or module of one or more STIX Object types.
+3. Define additional properties for an existing STIX Object type at the object's top-level. This can be done to represent properties that form an inherent part of the definition of an object type.
+
+When defining a new STIX Object (e.g., SDO, SCO, or SRO) all common properties associated with that type of object (SDO, SCO, SRO) MUST be included in the schema or definition of that new STIX Object type. Extensions that create new STIX objects MUST follow all conformance requirements for that object type (SDO, SCO, SRO) including all of the requirements for the common properties associated with that object type.
+
+When defining a STIX extension using the nested property extension mechanism the extensions property MUST include the extension definition's UUID that defines the extension definition object and the extension_type property as defined in section 3.2.
+
+IMPORTANT NOTE: Producers using top-level property extensions should be mindful that another producer could also define a top-level property extension using the same property names but for different purposes causing name conflicts when both extensions are used in the same environment. This standard does not define any name conflict resolution for new STIX Objects or for top-level properties created by this extension mechanism. However, producers SHOULD follow industry best practices such as using unique property names that are guaranteed to avoid duplicates across all organizations to avoid naming conflicts.
+
+IMPORTANT NOTE: Producers using STIX extensions should be mindful that future versions of the STIX specification MAY define objects and or properties that conflict with existing non-standardized extensions. In these cases the meaning as defined in the STIX specification will override any and all conflicting extensions.
+
+Specific extensions, as with specific Custom Properties, MAY NOT be supported across implementations. A consumer that receives STIX content containing a STIX extension that it does not understand MAY refuse to process the content or MAY ignore that extension and continue processing the content.
+
+The three uses of this extension facility MAY be combined into a single Extension Definition object when appropriate.
+
+The following example highlights where this may be useful.
+
+Hybrid Extension Example
+
+An intelligence producer has a monitoring network of sensors that collect a variety of cybersecurity  telemetry from each sensor where those sensors have unique data not currently defined in STIX 2.1. The producer wishes to create an extension that other downstream consumers can receive both the high-level summarization object but also the individual categorized telemetry from each sensor.
+
+<ol type="a">
+  <li>A new SDO representing the statistical summarization object.</li>
+  <li>A list of new properties to be added to the standard Observed Data object representing additional meta-data information associated with the telemetry.</li>
+  <li>A new SCO representing a new cyber observable data type.</li>
+</ol>
+
+In this case, the producer creates a single extension that contains the following extension types:
+
+"extension_types": [ "new-sdo", "new-sco", "property-extension" ]
+
+Therefore, producers MAY use the hybrid extension mechanism when they wish to define a single extension that encompasses new SDO and/or sub-component or top-level property extension properties in a related extension.
+
+Producers SHOULD NOT use the hybrid extension mechanism if the extensions are not related to each other. If the extensions are independent features then a producer SHOULD consider creating separate extension definitions.

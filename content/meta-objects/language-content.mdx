@@ -1,0 +1,11 @@
+---
+title: Language Content
+---
+
+The Language Content object represents text content for STIX Objects represented in languages other than that of the original object. Language content may be a translation of the original object by a third-party, a first-source translation by the original publisher, or additional official language content provided at the time of creation.
+
+Language Content contains two important sets of properties:
+
+- The object_ref and object_modified properties specify the target object that the language content applies to.
+    - For example, to provide additional language content for a Campaign, the object_ref property should be set to the id of the Campaign and the object_modified property set to its modified time. Most relationships in STIX are not specific to a particular version of a STIX object, but because language content provides the translation of specific text, the object_modified property is necessary to provide that specificity.
+- The content property is a dictionary which maps to properties in the target object in order to provide a translation of them.

@@ -1,0 +1,47 @@
+---
+title: User Account
+---
+import { PropertiesOverview } from '@/components/properties-overview';
+import { PropertyDefinitions } from '@/components/property-definitions';
+import { Relationships } from '@/components/relationships';
+
+The User Account object represents an instance of any type of user account, including but not limited to operating system, device, messaging service, and social media platform accounts. As all properties of this object are optional, at least one of the properties defined below <b>MUST</b> be included when using this object.
+
+## Properties
+<PropertiesOverview type='user-account' />
+<PropertyDefinitions type='user-account' />
+
+## Examples
+
+### Basic UNIX Account
+```json
+{
+  "type": "user-account",
+  "spec_version": "2.1",
+  "id": "user-account--0d5b424b-93b8-5cd8-ac36-306e1789d63c",
+  "user_id": "1001",
+  "account_login": "jdoe",
+  "account_type": "unix",
+  "display_name": "John Doe",
+  "is_service_account": false,
+  "is_privileged": false,
+  "can_escalate_privs": true,
+  "account_created": "2016-01-20T12:31:12Z",
+  "credential_last_changed": "2016-01-20T14:27:43Z",
+  "account_first_login": "2016-01-20T14:26:07Z",
+  "account_last_login": "2016-07-22T16:08:28Z"
+}
+```
+
+### Basic Twitter Account
+```json
+{
+  "type": "user-account",
+  "spec_version": "2.1",
+  "id": "user-account--9bd3afcf-deee-54f9-83e2-520653cb6bba",
+  "user_id": "thegrugq_ebooks",
+  "account_login": "thegrugq_ebooks",
+  "account_type": "twitter",
+  "display_name": "the grugq"
+}
+```
