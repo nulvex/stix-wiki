@@ -1220,10 +1220,10 @@
     "@tailwindcss/oxide" "4.1.14"
     tailwindcss "4.1.14"
 
-"@tanstack/directive-functions-plugin@1.132.31":
-  version "1.132.31"
-  resolved "https://registry.npmjs.org/@tanstack/directive-functions-plugin/-/directive-functions-plugin-1.132.31.tgz"
-  integrity sha512-u6TaLhTmllnvINZAoc1r7TbZ0H1IgnqGpoN0pUvWrqpKuunAugZO7fwD1TeYApGyB/RmSWarHMMkNbDffvlJvQ==
+"@tanstack/directive-functions-plugin@1.132.42":
+  version "1.132.42"
+  resolved "https://registry.yarnpkg.com/@tanstack/directive-functions-plugin/-/directive-functions-plugin-1.132.42.tgz#4792846f359ff106fefc8ce60cd37ec9c6a4f227"
+  integrity sha512-GIPaal17gt/huxIJ3k5nsNkKHR/vv+PMtNtwsZYNT0aw27bXwPsLoNiFE+L+qjmm8hg4o0uPRzL2yKs57W8Oow==
   dependencies:
     "@babel/code-frame" "7.27.1"
     "@babel/core" "^7.27.7"
@@ -1231,6 +1231,7 @@
     "@babel/types" "^7.27.7"
     "@tanstack/router-utils" "1.132.31"
     babel-dead-code-elimination "^1.0.10"
+    pathe "^2.0.3"
     tiny-invariant "^1.3.3"
 
 "@tanstack/history@1.132.31":
@@ -1246,52 +1247,52 @@
     "@tanstack/router-devtools-core" "1.132.33"
     vite "^7.1.7"
 
-"@tanstack/react-router@1.132.33", "@tanstack/react-router@^1.132.7":
-  version "1.132.33"
-  resolved "https://registry.npmjs.org/@tanstack/react-router/-/react-router-1.132.33.tgz"
-  integrity sha512-o/uOh/EfCRr5u2SyY6aHJCIREZKTyXsiztMnZGSWjT055J99IaQm7zUwq9ZeK841hsZ7fhgMjLh8my75SOdobA==
+"@tanstack/react-router@1.132.41", "@tanstack/react-router@^1.132.41":
+  version "1.132.41"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.132.41.tgz#bb8cff8e4d0d71b0e679aadb60d9ef0aaff2d07b"
+  integrity sha512-KaQhU3lsxYgwa02EuxskOrMGI+EWSZ03F4Ac4NNReWK041iOIzYM5RbluyMNAEAv7gWJsysZOzG2/dbuR/8JHg==
   dependencies:
     "@tanstack/history" "1.132.31"
     "@tanstack/react-store" "^0.7.0"
-    "@tanstack/router-core" "1.132.33"
+    "@tanstack/router-core" "1.132.41"
     isbot "^5.1.22"
     tiny-invariant "^1.3.3"
     tiny-warning "^1.0.3"
 
-"@tanstack/react-start-client@1.132.36":
-  version "1.132.36"
-  resolved "https://registry.npmjs.org/@tanstack/react-start-client/-/react-start-client-1.132.36.tgz"
-  integrity sha512-vu5ZzfR4w2oxhK4TP8W8H//pwAGjPonxRpXGO47ozEMZFuYs/OKh7rblz1rBi18zrhyumohadr+q5CioHAZrQw==
+"@tanstack/react-start-client@1.132.43":
+  version "1.132.43"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-start-client/-/react-start-client-1.132.43.tgz#c2c380de97e0b6ced9cc0e5456fae26a5ce2a983"
+  integrity sha512-QP5Gt8GJxcdj2ohomwSY9ryT831EldgIhbOTpKF0DTSHrW0YfNdcZC3TLALsq8rHrKlSdvTST8o/iM1ZQmz7Xg==
   dependencies:
-    "@tanstack/react-router" "1.132.33"
-    "@tanstack/router-core" "1.132.33"
-    "@tanstack/start-client-core" "1.132.36"
+    "@tanstack/react-router" "1.132.41"
+    "@tanstack/router-core" "1.132.41"
+    "@tanstack/start-client-core" "1.132.43"
     tiny-invariant "^1.3.3"
     tiny-warning "^1.0.3"
 
-"@tanstack/react-start-server@1.132.36":
-  version "1.132.36"
-  resolved "https://registry.npmjs.org/@tanstack/react-start-server/-/react-start-server-1.132.36.tgz"
-  integrity sha512-0RE5KDeEfCDlOLeARWwzcT5kUvd+9Z7aQevlOTdB6p5hDcR3Uucrvq9rhQBG0tsCu3uQ6d8xNKP8ENp8aRCeTQ==
+"@tanstack/react-start-server@1.132.43":
+  version "1.132.43"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-start-server/-/react-start-server-1.132.43.tgz#245df3b43eaa1c6be3e4d30ebc20caac2b14a7ba"
+  integrity sha512-ELqueQX4inCs2BaYQQN1sAxIFVVk9YTXVZvAiYuqyAkUNJMmB5/eFT2owgCOy4SaqnJDKFXP5wBc2cFWG5zLuA==
   dependencies:
     "@tanstack/history" "1.132.31"
-    "@tanstack/react-router" "1.132.33"
-    "@tanstack/router-core" "1.132.33"
-    "@tanstack/start-client-core" "1.132.36"
-    "@tanstack/start-server-core" "1.132.36"
+    "@tanstack/react-router" "1.132.41"
+    "@tanstack/router-core" "1.132.41"
+    "@tanstack/start-client-core" "1.132.43"
+    "@tanstack/start-server-core" "1.132.43"
 
-"@tanstack/react-start@^1.132.36":
-  version "1.132.36"
-  resolved "https://registry.npmjs.org/@tanstack/react-start/-/react-start-1.132.36.tgz"
-  integrity sha512-BykMOsDgW4PtLF+kVwtQU+5ZjDKQzo9x9zo1z9KntBwnAIIObG+4qw7lAHhXeJYJGmq4MAvMTutr2ewP3+W37Q==
+"@tanstack/react-start@^1.132.43":
+  version "1.132.43"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-start/-/react-start-1.132.43.tgz#f5d07317c748d44ec2f1fa7659710ce8c7e050f0"
+  integrity sha512-D5RInFbVOoWKqzLtG2r/3IOfs0jXNQO/kSJs1hrOGGnGseayaYDuKOftbhGQNJbVtp9+OiLuD7yKj7ZLAZcYHw==
   dependencies:
-    "@tanstack/react-router" "1.132.33"
-    "@tanstack/react-start-client" "1.132.36"
-    "@tanstack/react-start-server" "1.132.36"
+    "@tanstack/react-router" "1.132.41"
+    "@tanstack/react-start-client" "1.132.43"
+    "@tanstack/react-start-server" "1.132.43"
     "@tanstack/router-utils" "^1.132.31"
-    "@tanstack/start-client-core" "1.132.36"
-    "@tanstack/start-plugin-core" "1.132.36"
-    "@tanstack/start-server-core" "1.132.36"
+    "@tanstack/start-client-core" "1.132.43"
+    "@tanstack/start-plugin-core" "1.132.43"
+    "@tanstack/start-server-core" "1.132.43"
     pathe "^2.0.3"
 
 "@tanstack/react-store@^0.7.0":
@@ -1302,10 +1303,10 @@
     "@tanstack/store" "0.7.7"
     use-sync-external-store "^1.5.0"
 
-"@tanstack/router-core@1.132.33":
-  version "1.132.33"
-  resolved "https://registry.npmjs.org/@tanstack/router-core/-/router-core-1.132.33.tgz"
-  integrity sha512-7EwXqlcBsIbDfb8MjhpZp0yaZHE6Jl+TBHtQ3WErramBB5PLFtYVDB1fiJnZMCftHXJNWXMAz4640VTcCQsXow==
+"@tanstack/router-core@1.132.41":
+  version "1.132.41"
+  resolved "https://registry.yarnpkg.com/@tanstack/router-core/-/router-core-1.132.41.tgz#c3d1b2324681af0680a70b09aa882c264dc624a5"
+  integrity sha512-NW1KWvhaMZpRlRtrr433xe5RErqUVRwnbwhWJWrqVkkZL5R2c/aH9dcW1xTKkEFX2k4VZkFpVJ181iPHYOktUA==
   dependencies:
     "@tanstack/history" "1.132.31"
     "@tanstack/store" "^0.7.0"
@@ -1325,12 +1326,12 @@
     solid-js "^1.9.5"
     vite "^7.1.7"
 
-"@tanstack/router-generator@1.132.33":
-  version "1.132.33"
-  resolved "https://registry.npmjs.org/@tanstack/router-generator/-/router-generator-1.132.33.tgz"
-  integrity sha512-KXLl7vOvXuvEuuIHqqirfalLEjbO+VtuvU9fhG9Xh9lYk84uEt8/Qvhe+UDu2+CP5IIQEmghlGVTRw/3BZo9FQ==
+"@tanstack/router-generator@1.132.41":
+  version "1.132.41"
+  resolved "https://registry.yarnpkg.com/@tanstack/router-generator/-/router-generator-1.132.41.tgz#5ba726c67de1d70c96721c2347ad70c49d5e8bbd"
+  integrity sha512-9vxqeh8MI+PD8bwt2o0khScwPwrbpO9lGAT0W/+mhLRGwoX9jmvn2Y/PMr8Tjo4wrZcGzkqVUNNgfjgASOJ13A==
   dependencies:
-    "@tanstack/router-core" "1.132.33"
+    "@tanstack/router-core" "1.132.41"
     "@tanstack/router-utils" "1.132.31"
     "@tanstack/virtual-file-routes" "1.132.31"
     prettier "^3.5.0"
@@ -1339,10 +1340,10 @@
     tsx "^4.19.2"
     zod "^3.24.2"
 
-"@tanstack/router-plugin@1.132.33":
-  version "1.132.33"
-  resolved "https://registry.npmjs.org/@tanstack/router-plugin/-/router-plugin-1.132.33.tgz"
-  integrity sha512-jt8HjETP8EtIaRG9+d90OtORcWPiwAdAf+Xv0mNzEaPIoJyrt+CHHYz6tPOoMU4JlqZurFQMTyHbjefoWIkhAA==
+"@tanstack/router-plugin@1.132.41":
+  version "1.132.41"
+  resolved "https://registry.yarnpkg.com/@tanstack/router-plugin/-/router-plugin-1.132.41.tgz#eae16594c1cc72199d0bf577e95b8acf811180f2"
+  integrity sha512-KnKGcKp/IX6uuFq9NRjhk4LrTzdjMYo4WWEaAD9HqGRv4P5PgylCdK0ykF5/UJx6Aoz3ySjr4SrPZmzV4/Hs2g==
   dependencies:
     "@babel/core" "^7.27.7"
     "@babel/plugin-syntax-jsx" "^7.27.1"
@@ -1350,8 +1351,8 @@
     "@babel/template" "^7.27.2"
     "@babel/traverse" "^7.27.7"
     "@babel/types" "^7.27.7"
-    "@tanstack/router-core" "1.132.33"
-    "@tanstack/router-generator" "1.132.33"
+    "@tanstack/router-core" "1.132.41"
+    "@tanstack/router-generator" "1.132.41"
     "@tanstack/router-utils" "1.132.31"
     "@tanstack/virtual-file-routes" "1.132.31"
     babel-dead-code-elimination "^1.0.10"
@@ -1373,10 +1374,10 @@
     fast-glob "^3.3.3"
     pathe "^2.0.3"
 
-"@tanstack/server-functions-plugin@1.132.31":
-  version "1.132.31"
-  resolved "https://registry.npmjs.org/@tanstack/server-functions-plugin/-/server-functions-plugin-1.132.31.tgz"
-  integrity sha512-XjkW0cE6bJXswJwncM8DImjqBqNG8v4GSR+ZFuYkmasXs26dNyS5cucMU4+egS3YC0sNyksCBdD35XrnGlRWLQ==
+"@tanstack/server-functions-plugin@1.132.42":
+  version "1.132.42"
+  resolved "https://registry.yarnpkg.com/@tanstack/server-functions-plugin/-/server-functions-plugin-1.132.42.tgz#a138be558dc6264ed315757cb1c0ba20def05725"
+  integrity sha512-wwEuLlh7ty+L6jGV8FXKO50MMpDXtpAdDdrjfHBl4ekRQUFbegkpRRYFiYwUVz3ZDVZSypsKGgvdJzyxo+W/5w==
   dependencies:
     "@babel/code-frame" "7.27.1"
     "@babel/core" "^7.27.7"
@@ -1385,36 +1386,36 @@
     "@babel/template" "^7.27.2"
     "@babel/traverse" "^7.27.7"
     "@babel/types" "^7.27.7"
-    "@tanstack/directive-functions-plugin" "1.132.31"
+    "@tanstack/directive-functions-plugin" "1.132.42"
     babel-dead-code-elimination "^1.0.9"
     tiny-invariant "^1.3.3"
 
-"@tanstack/start-client-core@1.132.36":
-  version "1.132.36"
-  resolved "https://registry.npmjs.org/@tanstack/start-client-core/-/start-client-core-1.132.36.tgz"
-  integrity sha512-u3nbGOZqhg1SXcGXT1FtuJ2HE++rqxk3+Q1qFmrRvUg0mVZ1fRhxZDftzY6L/OzP9MgIA6ixXhd9wBz260Pt5Q==
+"@tanstack/start-client-core@1.132.43":
+  version "1.132.43"
+  resolved "https://registry.yarnpkg.com/@tanstack/start-client-core/-/start-client-core-1.132.43.tgz#6c624f24a0391b597a9a0a69c7833225ce0f7183"
+  integrity sha512-gE6c1HHQbHvCHWg/6i5jiZ8+fMO5TnIfjvDFuFpHXyO3mbi7Qytru6GQHL7emkSmM8nicuWE1+tKekDN+5VpmQ==
   dependencies:
-    "@tanstack/router-core" "1.132.33"
-    "@tanstack/start-storage-context" "1.132.33"
+    "@tanstack/router-core" "1.132.41"
+    "@tanstack/start-storage-context" "1.132.41"
     seroval "^1.3.2"
     tiny-invariant "^1.3.3"
     tiny-warning "^1.0.3"
 
-"@tanstack/start-plugin-core@1.132.36":
-  version "1.132.36"
-  resolved "https://registry.npmjs.org/@tanstack/start-plugin-core/-/start-plugin-core-1.132.36.tgz"
-  integrity sha512-vsqywnZaFFZ2v62bG8oZ7AJIgFplM5DWR8ln1S4MyURXhClb64cdV3DG0zhKfFnaZXDJBv4Qesq1vc6Gs4U0HA==
+"@tanstack/start-plugin-core@1.132.43":
+  version "1.132.43"
+  resolved "https://registry.yarnpkg.com/@tanstack/start-plugin-core/-/start-plugin-core-1.132.43.tgz#ae4e0d701f5beda6bc239f62f140e1abd9e6f842"
+  integrity sha512-2nZdAQZlLpUT3PW+5AbEbHi9m1+QCnntU21NgL7hHE/CBnhOw5ihH+HSWhzGvGsheZ45lg6oWUEUdtAqD74LVw==
   dependencies:
     "@babel/code-frame" "7.26.2"
     "@babel/core" "^7.26.8"
     "@babel/types" "^7.26.8"
     "@rolldown/pluginutils" "1.0.0-beta.40"
-    "@tanstack/router-core" "1.132.33"
-    "@tanstack/router-generator" "1.132.33"
-    "@tanstack/router-plugin" "1.132.33"
+    "@tanstack/router-core" "1.132.41"
+    "@tanstack/router-generator" "1.132.41"
+    "@tanstack/router-plugin" "1.132.41"
     "@tanstack/router-utils" "1.132.31"
-    "@tanstack/server-functions-plugin" "1.132.31"
-    "@tanstack/start-server-core" "1.132.36"
+    "@tanstack/server-functions-plugin" "1.132.42"
+    "@tanstack/start-server-core" "1.132.43"
     babel-dead-code-elimination "^1.0.9"
     cheerio "^1.0.0"
     exsolve "^1.0.7"
@@ -1426,25 +1427,33 @@
     xmlbuilder2 "^3.1.1"
     zod "^3.24.2"
 
-"@tanstack/start-server-core@1.132.36":
-  version "1.132.36"
-  resolved "https://registry.npmjs.org/@tanstack/start-server-core/-/start-server-core-1.132.36.tgz"
-  integrity sha512-qlk0GbM3EBGR+b+vypdFf8FPkqcVRlcaaF6JbqU6NKlTgGjv5gJnC5xkp41ikhZAf2bLZglgqH18RnETbsVSaw==
+"@tanstack/start-server-core@1.132.43":
+  version "1.132.43"
+  resolved "https://registry.yarnpkg.com/@tanstack/start-server-core/-/start-server-core-1.132.43.tgz#8aebc87893466c7db09802d1397f951fc6c676b8"
+  integrity sha512-/IMpzP4dbNAQNDWTIwxeI2PnPYFdKDffK0LDHSoCe9xgH0ml1cMXQJ61hJ3It/9kFRLiYEBtlKYU396yn1RZMw==
   dependencies:
     "@tanstack/history" "1.132.31"
-    "@tanstack/router-core" "1.132.33"
-    "@tanstack/start-client-core" "1.132.36"
-    "@tanstack/start-storage-context" "1.132.33"
+    "@tanstack/router-core" "1.132.41"
+    "@tanstack/start-client-core" "1.132.43"
+    "@tanstack/start-storage-context" "1.132.41"
     h3-v2 "npm:h3@2.0.0-beta.4"
     seroval "^1.3.2"
     tiny-invariant "^1.3.3"
 
-"@tanstack/start-storage-context@1.132.33":
-  version "1.132.33"
-  resolved "https://registry.npmjs.org/@tanstack/start-storage-context/-/start-storage-context-1.132.33.tgz"
-  integrity sha512-T2Bo8e1GvuE/MluW7QRAXkPzlTVB4IKDVwzDLxZK1VeWJIiX9VqAWi+QEcsVvuBGrfxdRvolfiFPf8yEiLl91Q==
+"@tanstack/start-static-server-functions@^1.132.43":
+  version "1.132.43"
+  resolved "https://registry.yarnpkg.com/@tanstack/start-static-server-functions/-/start-static-server-functions-1.132.43.tgz#d81c2a224bf48cc69410acc468ddda7d0439c2a3"
+  integrity sha512-yps+dVaOAyQcbEPYR970qVLk8zsD89+FavkmE5KwFdYOFdST1OrCpQvj3DppogmKctSgz8nXXbm8v/hL65QYkQ==
   dependencies:
-    "@tanstack/router-core" "1.132.33"
+    "@tanstack/start-client-core" "1.132.43"
+    seroval "^1.3.2"
+
+"@tanstack/start-storage-context@1.132.41":
+  version "1.132.41"
+  resolved "https://registry.yarnpkg.com/@tanstack/start-storage-context/-/start-storage-context-1.132.41.tgz#bfad2e853bc35e383c2c68037d0957572ac289a0"
+  integrity sha512-wNp786OEo/87Vo0fiMvdaeak5xGvh8Si+Py2+M1gEV6TXUhQWKSFNUNvW3t8iMTovDZ++1Mng/CAfeYHDmYHuA==
+  dependencies:
+    "@tanstack/router-core" "1.132.41"
 
 "@tanstack/store@0.7.7", "@tanstack/store@^0.7.0":
   version "0.7.7"

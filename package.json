@@ -13,9 +13,10 @@
   "dependencies": {
     "@orama/orama": "^3.1.14",
     "@radix-ui/react-slot": "^1.2.3",
-    "@tanstack/react-router": "^1.132.7",
+    "@tanstack/react-router": "^1.132.41",
     "@tanstack/react-router-devtools": "^1.132.11",
-    "@tanstack/react-start": "^1.132.36",
+    "@tanstack/react-start": "^1.132.43",
+    "@tanstack/start-static-server-functions": "^1.132.43",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "fumadocs-core": "15.8.3",
