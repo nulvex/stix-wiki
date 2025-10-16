@@ -1,5 +1,5 @@
 interface RelationshipDefinition {
-  source: string;
+  source: string | string[];
   relationship: string;
   target: string | string[];
   description: string;

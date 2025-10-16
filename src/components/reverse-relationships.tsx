@@ -7,7 +7,7 @@ interface ReverseRelationshipsProps {
 
 export function ReverseRelationships({ type }: ReverseRelationshipsProps) {
   const relationships = relationshipDefinitions[type]?.reverse;
-  
+
   if (!relationships || relationships.length === 0) {
     return null;
   }
@@ -27,30 +27,57 @@ export function ReverseRelationships({ type }: ReverseRelationshipsProps) {
           </tr>
         </thead>
         <tbody className="divide-y divide-border">
-          {relationships.map((rel, index) => (
-            <ReverseRelationshipRow
-              key={index}
-              source={Array.isArray(rel.source) ? (
-                <>
-                  {rel.source.map((s, i) => (
+          {relationships.map((rel, index) => {
+            if (!Array.isArray(rel.target)) {
+              return (
+                <ReverseRelationshipRow
+                  key={index}
+                  source={Array.isArray(rel.source) ? (
                     <>
-                      {i > 0 && ", "}
-                      <code key={s} className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-                        {s}
-                      </code>
+                      {rel.source.map((s, i) => (
+                        <>
+                          {i > 0 && ", "}
+                          <code key={s} className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
+                            {s}
+                          </code>
+                        </>
+                      ))}
                     </>
-                  ))}
-                </>
-              ) : (
-                <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-                  {rel.source}
-                </code>
-              )}
-              relationship={rel.relationship}
-              target={rel.target}
-              description={rel.description}
-            />
-          ))}
+                  ) : (
+                    <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
+                      {rel.source}
+                    </code>
+                  )}
+                  relationship={rel.relationship}
+                  target={rel.target}
+                />
+              )
+            } else {
+              return rel.target.map((target) => (
+                <ReverseRelationshipRow
+                  key={index}
+                  source={Array.isArray(rel.source) ? (
+                    <>
+                      {rel.source.map((s, i) => (
+                        <>
+                          {i > 0 && ", "}
+                          <code key={s} className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
+                            {s}
+                          </code>
+                        </>
+                      ))}
+                    </>
+                  ) : (
+                    <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
+                      {rel.source}
+                    </code>
+                  )}
+                  relationship={rel.relationship}
+                  target={target}
+                />
+              ))
+            }
+          })}
         </tbody>
       </table>
     </div>

@@ -7,7 +7,7 @@ interface ForwardRelationshipsProps {
 
 export function ForwardRelationships({ type }: ForwardRelationshipsProps) {
   const relationships = relationshipDefinitions[type]?.forward;
-  
+
   if (!relationships || relationships.length === 0) {
     return null;
   }
@@ -27,30 +27,59 @@ export function ForwardRelationships({ type }: ForwardRelationshipsProps) {
           </tr>
         </thead>
         <tbody className="divide-y divide-border">
-          {relationships.map((rel, index) => (
-            <RelationshipRow
-              key={index}
-              source={rel.source}
-              relationship={rel.relationship}
-              target={Array.isArray(rel.target) ? (
-                <>
-                  {rel.target.map((t, i) => (
+          {relationships.map((rel, index) => {
+            if (!Array.isArray(rel.source)) {
+              return (
+                <RelationshipRow
+                  key={index}
+                  source={rel.source}
+                  relationship={rel.relationship}
+                  target={Array.isArray(rel.target) ? (
                     <>
-                      {i > 0 && ", "}
-                      <code key={t} className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-                        {t}
-                      </code>
+                      {rel.target.map((t, i) => (
+                        <>
+                          {i > 0 && ", "}
+                          <code key={t} className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
+                            {t}
+                          </code>
+                        </>
+                      ))}
                     </>
-                  ))}
-                </>
-              ) : (
-                <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-                  {rel.target}
-                </code>
-              )}
-              description={rel.description}
-            />
-          ))}
+                  ) : (
+                    <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
+                      {rel.target}
+                    </code>
+                  )}
+                  description={rel.description}
+                />
+              );
+            } else {
+              return rel.source.map((source) => (
+                <RelationshipRow
+                  key={index}
+                  source={source}
+                  relationship={rel.relationship}
+                  target={Array.isArray(rel.target) ? (
+                    <>
+                      {rel.target.map((t, i) => (
+                        <>
+                          {i > 0 && ", "}
+                          <code key={t} className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
+                            {t}
+                          </code>
+                        </>
+                      ))}
+                    </>
+                  ) : (
+                    <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
+                      {rel.target}
+                    </code>
+                  )}
+                  description={rel.description}
+                />
+              ));
+            }
+          })}
         </tbody>
       </table>
     </div>
