@@ -5,6 +5,29 @@ interface ReverseRelationshipsProps {
   type: string;
 }
 
+function renderSource(source: string | string[]) {
+  if (!Array.isArray(source)) {
+    return (
+      <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
+        {source}
+      </code>
+    );
+  }
+
+  return (
+    <>
+      {source.map((item, itemIndex) => (
+        <span key={`${item}-${itemIndex}`}>
+          {itemIndex > 0 && ', '}
+          <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
+            {item}
+          </code>
+        </span>
+      ))}
+    </>
+  );
+}
+
 export function ReverseRelationships({ type }: ReverseRelationshipsProps) {
   const relationships = relationshipDefinitions[type]?.reverse;
 
@@ -27,59 +50,21 @@ export function ReverseRelationships({ type }: ReverseRelationshipsProps) {
           </tr>
         </thead>
         <tbody className="divide-y divide-border">
-          {relationships.map((rel, index) => {
-            if (!Array.isArray(rel.target)) {
-              return (
-                <ReverseRelationshipRow
-                  key={`${index}-${Array.isArray(rel.source) ? rel.source.join('-') : rel.source}-${rel.relationship}`}
-                  source={Array.isArray(rel.source) ? (
-                    <>
-                      {rel.source.map((s, i) => (
-                        <>
-                          {i > 0 && ", "}
-                          <code key={s} className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-                            {s}
-                          </code>
-                        </>
-                      ))}
-                    </>
-                  ) : (
-                    <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-                      {rel.source}
-                    </code>
-                  )}
-                  relationship={rel.relationship}
-                  target={rel.target}
-                />
-              )
-            } else {
-              return rel.target.map((target) => (
-                <ReverseRelationshipRow
-                  key={`${index}-${target}-${rel.relationship}`}
-                  source={Array.isArray(rel.source) ? (
-                    <>
-                      {rel.source.map((s, i) => (
-                        <>
-                          {i > 0 && ", "}
-                          <code key={s} className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-                            {s}
-                          </code>
-                        </>
-                      ))}
-                    </>
-                  ) : (
-                    <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-                      {rel.source}
-                    </code>
-                  )}
-                  relationship={rel.relationship}
-                  target={target}
-                />
-              ))
-            }
+          {relationships.map((rel) => {
+            const targets = Array.isArray(rel.target) ? rel.target : [rel.target];
+            const sourceKey = Array.isArray(rel.source) ? rel.source.join('|') : rel.source;
+
+            return targets.map((target, targetIndex) => (
+              <ReverseRelationshipRow
+                key={`${sourceKey}-${rel.relationship}-${target}-${targetIndex}`}
+                source={renderSource(rel.source)}
+                relationship={rel.relationship}
+                target={target}
+              />
+            ));
           })}
         </tbody>
       </table>
     </div>
   );
-};
+}
