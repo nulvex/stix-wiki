@@ -31,7 +31,7 @@ export function ReverseRelationships({ type }: ReverseRelationshipsProps) {
             if (!Array.isArray(rel.target)) {
               return (
                 <ReverseRelationshipRow
-                  key={index}
+                  key={`${index}-${Array.isArray(rel.source) ? rel.source.join('-') : rel.source}-${rel.relationship}`}
                   source={Array.isArray(rel.source) ? (
                     <>
                       {rel.source.map((s, i) => (
@@ -55,7 +55,7 @@ export function ReverseRelationships({ type }: ReverseRelationshipsProps) {
             } else {
               return rel.target.map((target) => (
                 <ReverseRelationshipRow
-                  key={index}
+                  key={`${index}-${target}-${rel.relationship}`}
                   source={Array.isArray(rel.source) ? (
                     <>
                       {rel.source.map((s, i) => (
