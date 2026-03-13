@@ -31,7 +31,7 @@ export function ForwardRelationships({ type }: ForwardRelationshipsProps) {
             if (!Array.isArray(rel.source)) {
               return (
                 <RelationshipRow
-                  key={index}
+                  key={`${index}-${rel.source}-${rel.relationship}`}
                   source={rel.source}
                   relationship={rel.relationship}
                   target={Array.isArray(rel.target) ? (
@@ -56,7 +56,7 @@ export function ForwardRelationships({ type }: ForwardRelationshipsProps) {
             } else {
               return rel.source.map((source) => (
                 <RelationshipRow
-                  key={index}
+                  key={`${index}-${source}-${rel.relationship}`}
                   source={source}
                   relationship={rel.relationship}
                   target={Array.isArray(rel.target) ? (
