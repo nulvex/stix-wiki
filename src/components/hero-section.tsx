@@ -1,8 +1,21 @@
 import { Link } from '@tanstack/react-router';
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { useState } from 'react';
 
 export function HeroSection() {
+  const [copied, setCopied] = useState(false);
+
+  async function copyMcpLink() {
+    const mcpUrl = `${window.location.origin}/api/mcp`;
+    await navigator.clipboard.writeText(mcpUrl);
+    setCopied(true);
+
+    window.setTimeout(() => {
+      setCopied(false);
+    }, 1500);
+  }
+
   return (
     <section className="flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -36,6 +49,9 @@ export function HeroSection() {
               Start building
               <ArrowRight className="h-4 w-4" />
             </Link>
+          </Button>
+          <Button size="lg" variant="secondary" onClick={copyMcpLink}>
+            {copied ? 'MCP link copied!' : 'Copy MCP link'}
           </Button>
         </div>
       </div>
