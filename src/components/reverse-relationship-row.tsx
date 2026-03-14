@@ -5,7 +5,7 @@ export function ReverseRelationshipRow({
 }: {
   source: React.ReactNode
   relationship: string
-  target: string
+  target: React.ReactNode
 }) {
   return (
     <tr className="hover:bg-muted/30">
@@ -18,7 +18,7 @@ export function ReverseRelationshipRow({
         </code>
       </td>
       <td className="px-4 py-3 align-top">
-        <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">{target}</code>
+        <div className="flex flex-wrap gap-1">{target}</div>
       </td>
       <td className="px-4 py-3 text-xs text-muted-foreground">See forward relationship for definition.</td>
     </tr>

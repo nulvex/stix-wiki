@@ -1,4 +1,5 @@
 import { RelationshipRow } from '@/components/relationship-row';
+import { ObjectTypeLink } from '@/components/object-type-link';
 import { relationshipDefinitions } from '@/lib/relationship-definitions';
 
 interface ForwardRelationshipsProps {
@@ -7,11 +8,7 @@ interface ForwardRelationshipsProps {
 
 function renderTarget(target: string | string[]) {
   if (!Array.isArray(target)) {
-    return (
-      <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-        {target}
-      </code>
-    );
+    return <ObjectTypeLink type={target} />;
   }
 
   return (
@@ -19,9 +16,7 @@ function renderTarget(target: string | string[]) {
       {target.map((item, itemIndex) => (
         <span key={`${item}-${itemIndex}`}>
           {itemIndex > 0 && ', '}
-          <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-            {item}
-          </code>
+          <ObjectTypeLink type={item} />
         </span>
       ))}
     </>
@@ -57,7 +52,7 @@ export function ForwardRelationships({ type }: ForwardRelationshipsProps) {
             return sources.map((source, sourceIndex) => (
               <RelationshipRow
                 key={`${source}-${sourceIndex}-${rel.relationship}-${targetKey}`}
-                source={source}
+                source={<ObjectTypeLink type={source} />}
                 relationship={rel.relationship}
                 target={renderTarget(rel.target)}
                 description={rel.description}

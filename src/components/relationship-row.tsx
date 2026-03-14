@@ -4,7 +4,7 @@ export function RelationshipRow({
   target,
   description,
 }: {
-  source: string
+  source: React.ReactNode
   relationship: string
   target: React.ReactNode
   description: React.ReactNode
@@ -12,7 +12,7 @@ export function RelationshipRow({
   return (
     <tr className="hover:bg-muted/30">
       <td className="px-4 py-3 align-top">
-        <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">{source}</code>
+        <div className="flex flex-wrap gap-1">{source}</div>
       </td>
       <td className="px-4 py-3 align-top">
         <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs font-semibold text-blue-400">

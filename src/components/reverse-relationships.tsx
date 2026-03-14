@@ -1,3 +1,4 @@
+import { ObjectTypeLink } from '@/components/object-type-link';
 import { ReverseRelationshipRow } from '@/components/reverse-relationship-row';
 import { relationshipDefinitions } from '@/lib/relationship-definitions';
 
@@ -8,9 +9,7 @@ interface ReverseRelationshipsProps {
 function renderSource(source: string | string[]) {
   if (!Array.isArray(source)) {
     return (
-      <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-        {source}
-      </code>
+      <ObjectTypeLink type={source} />
     );
   }
 
@@ -19,9 +18,7 @@ function renderSource(source: string | string[]) {
       {source.map((item, itemIndex) => (
         <span key={`${item}-${itemIndex}`}>
           {itemIndex > 0 && ', '}
-          <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-xs text-accent">
-            {item}
-          </code>
+          <ObjectTypeLink type={item} />
         </span>
       ))}
     </>
@@ -59,7 +56,7 @@ export function ReverseRelationships({ type }: ReverseRelationshipsProps) {
                 key={`${sourceKey}-${rel.relationship}-${target}-${targetIndex}`}
                 source={renderSource(rel.source)}
                 relationship={rel.relationship}
-                target={target}
+                target={<ObjectTypeLink type={target} />}
               />
             ));
           })}
